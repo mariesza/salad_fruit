@@ -1,6 +1,7 @@
 //react préfère des composants fonctionnels que des classes
 //render() : fonction qui retourne du jrx
-
+import FruitsMaster from '../components/FruitsMaster';
+import listfruits from '../data/fruits.js';
 import React, {Component} from 'react'
 
 class Fruits extends React.Component {
@@ -16,13 +17,23 @@ class Fruits extends React.Component {
         this.stock = Number;
         this.origin = Number;
         this.season = String;
+        this.state = {show : false};
     }
     
     render() {
         return (
-        <h1> Test : {this.props.id} !</h1>);
-        // button onClick = {this.handleClick}> Cliquez-moi !</button>);
-    }
-}
+            <div>
+            <button 
+            onClick={() => this.setState({show : true})}
+            > Afficher la composition </button> 
+            {
+            this.state.show ?
+            listfruits.map((item,index) => <FruitsMaster key={index} fruit={item.fruit}/>)
+            : null        
+            }
 
-export default Fruits;
+            </div>
+            )
+        }
+        }
+export default Fruits
