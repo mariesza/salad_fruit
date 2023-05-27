@@ -1,13 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+///IMPORTATION///
+
+//Bibliothèque
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+//documents 
+import "./index.css";
+import FruitsMaster from "./components/FruitsMaster";
+import ErrorPage from "./components/ErrorPage";
+import FruitDetails from "./components/FruitDetails";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
+
+
+const router = createBrowserRouter([
+  {
+    path: "/fruits/:fruitName",
+    element: <FruitDetails />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/creation-de-compte",
+    element: <Signup />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/",
+    element: <FruitsMaster />,
+    errorElement: <ErrorPage />,
+  },
+{ path : '/connection',
+  element: <Signin />,
+  errorElement: <ErrorPage />,
+}
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

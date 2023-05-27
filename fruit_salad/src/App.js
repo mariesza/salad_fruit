@@ -1,31 +1,32 @@
 import './App.css';
 import FruitsMaster from './components/FruitsMaster';
-import listfruits from './data/fruits.js';
-import { v4 as uuid } from 'uuid';
-import Fruits from './models/Fruit.js';
 import { useState } from "react";
 
+//setState : mutateur
 
 function App() {
 
-  const unique_id = uuid();
-  const small_id = unique_id.slice(0,8)
+  const [displayList, setDisplayList] = useState(false) //par défaut, displayList à la valeur false donc on cache la liste 
+  //par défaut displayList a la valeur false
+  //donc on cache la liste
 
-  // const [index, setIndex] = useState(0);
-  // // const [showMore, setShowMore] = useState(false);
-  // const hasNext = index < listfruits.length - 1;
+  function onClick() {
+    setDisplayList(displayList ? false : true); //si displayList = true, alors on affecte la valeur false pour masquer sinon true : on affiche 
+    //condition ternaire
 
-  
+  }
 
   return (
     <div className="App">
 
-      <h1>Unique ID</h1>
-      <p>{unique_id}</p>
-      <h1>Sliced Unique ID</h1>
-      <p>{small_id}</p>
+    {/* <h1> Salade de fruit 😋 </h1>
+    <img src='/images/fruit-salad.png' alt="Salade de fruit" /> */}
 
-      <Fruits/>     
+    <button onClick={()=>onClick()}>Afficher /Masquer </button>
+    {/* {displayList && <FruitsMaster/>}
+    {!displayList && <p>Pas de fruit</p>} */}
+    
+    {displayList === true && <FruitsMaster />}
 
     </div>
   );
