@@ -14,6 +14,8 @@ import ErrorPage from "./components/ErrorPage";
 import FruitDetails from "./components/FruitDetails";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
+// import App from "./App.js"
+import FruitsMastertest from "./components/FruitsMasterTest";
 
 
 const router = createBrowserRouter([
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <FruitsMaster />,
+    element: <FruitsMaster />, 
     errorElement: <ErrorPage />,
   },
 { path : '/connection',
